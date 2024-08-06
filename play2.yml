@@ -1,0 +1,11 @@
+---
+- name: Manage crond service
+  hosts: all
+  become: true
+  tasks:
+  - name: Update the crond service 
+    ansible.builtin.service:
+      name: crond 
+      state: restarted
+      enabled: true
+...

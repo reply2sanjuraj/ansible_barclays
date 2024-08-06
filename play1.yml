@@ -1,0 +1,10 @@
+---
+- name: Create user 
+  hosts: serverd.lab.example.com
+  become: true
+  tasks:
+  - name: user lenovo creation
+    ansible.builtin.user:
+      name: lenovo
+      state: absent
+...
