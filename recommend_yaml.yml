@@ -1,0 +1,15 @@
+---
+- name: Pplay for setting a mail server
+  hosts: all
+  become: true 
+  tasks:
+  - name: Install package
+    ansible.builtin.yum:
+      name: postfix
+      state: latest
+  - name: Update the service
+    ansible.builtin.service:
+      name: postfix
+      state: started
+      enabled: true
+...

@@ -1,0 +1,19 @@
+---
+- name: Using block 
+  hosts: all
+  become: true
+  tasks:
+  - block:
+    - name: Install package 
+      ansible.builtin.yum:
+        name: http
+        state: latest
+    rescue:
+      - name: Print the message
+        ansible.builtin.debug:
+          msg: "Package was not present"
+    always:
+    - name: Print the custom message
+      ansible.builtin.debug:
+        msg: "I will always run from questions"
+...

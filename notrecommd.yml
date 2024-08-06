@@ -1,0 +1,10 @@
+---
+- name: Pplay for setting a mail server
+  hosts: all
+  become: true 
+  tasks:
+  - name: Install package
+    ansible.builtin.command: yum -y install postfix
+  - name: Update the service
+    ansible.builtin.command: systemctl enable --now postfix 
+...

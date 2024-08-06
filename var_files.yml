@@ -1,0 +1,4 @@
+---
+packages: 
+ - pkg1: tree
+ - pkg2: cronie

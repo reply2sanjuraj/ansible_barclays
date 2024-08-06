@@ -1,0 +1,15 @@
+---
+- name: Using block 
+  hosts: all
+  become: true
+  tasks:
+  - block:
+    - name: Install package 
+      ansible.builtin.yum:
+        name: httpd
+        state: latest
+    rescue:
+      - name: Print the message
+        ansible.builtin.debug:
+          msg: "Package was not present"
+...

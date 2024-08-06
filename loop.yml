@@ -1,0 +1,13 @@
+---
+- name: Deploy for setting a network service
+  hosts: all
+  become: true 
+  tasks:
+  - name: Install packages
+    ansible.builtin.yum:
+      name: "{{ item }}"
+      state: latest
+    loop:
+    - httpd
+    - vsftpd
+...

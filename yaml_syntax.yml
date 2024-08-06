@@ -1,0 +1,10 @@
+---
+- name: Folded syntax method
+  hosts: all
+  become: true
+  tasks:
+  - name: Package installation
+    ansible.builtin.yum: name=postfix state=latest
+  - name: Update the service of postfix 
+    ansible.builtin.service: name=postfix state=started enabled=true
+...

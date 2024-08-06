@@ -8,4 +8,7 @@
       name: crond 
       state: restarted
       enabled: true
+  - name: Print the message
+    ansible.builtin.debug:
+      msg: "Hello IT works"
 ...
