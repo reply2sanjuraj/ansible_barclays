@@ -1,0 +1,14 @@
+---
+- name: Using vars_prompt
+  hosts: servera.lab.example.com
+  become: true
+  vars_prompt:
+    - name: my_package
+      prompt: "Which package do you want to install? "
+      default: tree
+  tasks:
+  - name: Install {{ my_package }}
+    ansible.builtin.yum:
+      name: "{{ my_package }}"
+      state: present
+...

@@ -1,0 +1,12 @@
+---
+ansible-navigator:
+#  ansible:
+#    config:
+#      path: /home/student/ansible_barclays/ansible.cfg
+  execution-environment:
+    image: hub.lab.example.com/ee-supported-rhel8
+    pull:
+      policy: missing
+  mode: stdout
+  playbook-artifact:
+    enable: False

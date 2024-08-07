@@ -1,0 +1,17 @@
+all:
+  children:
+    ungrouped: {}
+    webserver:
+      hosts:
+        servera.lab.example.com:
+          my_pkg: tree
+        serverb.lab.example.com:
+          my_pkg: tree
+        serverc.lab.example.com:
+          my_pkg: tree
+        serverd.lab.example.com:
+          my_pkg: tree
+        servere.lab.example.com:
+          my_pkg: tree
+        serverf.lab.example.com:
+          my_pkg: tree

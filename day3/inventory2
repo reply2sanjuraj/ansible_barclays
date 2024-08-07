@@ -1,0 +1,5 @@
+[dc1]
+server[a:c].lab.example.com
+
+[dc2]
+server[d:f].lab.example.com

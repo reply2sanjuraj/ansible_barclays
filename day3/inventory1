@@ -1,0 +1,5 @@
+[webserver]
+servera.lab.example.com
+
+[webserver:vars]
+my_pkg=tree

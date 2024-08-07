@@ -1,0 +1,11 @@
+---
+- name: Using variables
+  hosts: webserver
+  become: true
+  vars:
+    my_pkg: httpd
+  tasks:
+  - name: Print the custom message
+    ansible.builtin.debug:
+      msg: "The variable has the value {{ my_pkg }}"
+...

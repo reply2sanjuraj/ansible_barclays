@@ -1,0 +1,28 @@
+---
+- name: Task execution
+  hosts: all
+  become: true
+  vars:
+    my_pkg: httpd
+  tasks:
+  - name: Task execution 
+    ansible.builtin.debug:
+      msg: "The variable used is {{ my_pkg }}"
+  - name: Install {{ my_pkg }}
+    ansible.builtin.yum:
+      name: "{{ my_pkg }}"
+      state: latest
+    register: pkg_status
+  - name: Print the version information about the package
+    ansible.builtin.debug:
+      var: pkg_status.results
+  - name: Create the content to serve
+    ansible.builtin.copy:
+      content: "Welcome {{ ansible_user }}\n"
+      dest: /var/www/html/index.html
+  - name: Start and enable the httpd 
+    ansible.builtin.service:
+      name: httpd
+      state: started
+      enabled: true
+...

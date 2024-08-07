@@ -1,0 +1,34 @@
+---
+- name: Create users and groups 
+  hosts: all
+  become: true
+  vars_files:
+    - users.yml 
+  tasks:
+  - name: create the groups
+    ansible.builtin.group:
+      name: "{{ item }}"
+      state: present
+    loop:
+     - developers
+     - sysadmin
+  - name: Create the user with the developers group membership
+    ansible.builtin.user:
+      name: "{{ items }}"
+      state: present
+      password: "{{ redhat123 | password_hash('sha512') }}"
+      groups: developers
+    loop:
+    - "{{ developers }}"
+
+  - name: Create the user with the sysadmin group membership
+    ansible.builtin.user:
+      name: "{{ items }}"
+      state: present
+      password: "{{ redhat123 | password_hash('sha512') }}"
+      groups: sysadmin,wheel
+    loop:
+    - "{{ sysadmin }}"
+
+
+...
