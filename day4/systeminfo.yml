@@ -1,0 +1,11 @@
+---
+- name: Take charge as an Ansible Admin
+  hosts: webservers
+  become: true
+#  gather_facts: false
+  tasks:
+  - name: Collect system information 
+    ansible.builtin.copy:
+      content: "This system {{ ansible_facts['fqdn'] }} has {{ ansible_processor_count }} processors with {{ ansible_memfree_mb }} MiB of free memory\n"
+      dest: /tmp/{{ ansible_host }}.txt
+

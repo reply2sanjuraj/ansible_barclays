@@ -1,0 +1,21 @@
+---
+- name: Using lineinfile
+  hosts: all
+  become: true
+  tasks:
+    - name: The file /etc/motd should be present 
+      ansible.builtin.file:
+        path: /etc/motd 
+        state: touch
+    - name: The file should have a line Ansible content
+      ansible.builtin.lineinfile:
+        path: /etc/motd
+        line: "Ansible managed content"
+        state: present
+    - name: The file should have a line Ansible content
+      ansible.builtin.lineinfile:
+        path: /etc/motd
+        regex: '^SELINUX'
+        state: absent
+...
+

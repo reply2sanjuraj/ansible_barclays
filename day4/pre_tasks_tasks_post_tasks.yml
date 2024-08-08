@@ -1,0 +1,15 @@
+---
+- name: Allow escalation at role level 
+  hosts: webservers
+  pre_tasks:
+    - name: Deployment Start message
+      ansible.builtin.debug:
+        msg: Deployment of the web server in progress
+  roles:
+    - role: apache
+      become: true
+  post_tasks:
+    - name: Result
+      ansible.builtin.debug:
+        msg: Deployment of the webserver completed successfully
+

@@ -1,0 +1,7 @@
+---
+- name: Demonstrate disabling the facts gathering
+  hosts: localhost
+  gather_facts: False # disables facts gathering
+  tasks:
+  - ansible.builtin.debug:
+      msg: "gather_facts is set to False"

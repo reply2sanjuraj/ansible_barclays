@@ -1,0 +1,24 @@
+---
+- name: Take charge as an Ansible Admin
+  hosts: webservers
+  become: true
+  tasks:
+  - name: Show which user is used by the play
+    ansible.builtin.debug:
+      var: ansible_user_id
+
+- name: This play does not use privilege escalation
+  hosts: webservers
+  become: false
+  tasks:
+  - name: Show which user is used by the play      
+    ansible.builtin.debug:                         
+      var: ansible_user_id
+
+- name: Default implementation
+  hosts: webservers
+  tasks:
+  - name: Show which user is used by the play      
+    ansible.builtin.debug:                         
+      var: ansible_user_id
+...

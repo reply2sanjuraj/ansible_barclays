@@ -1,0 +1,49 @@
+---
+- name: Handler
+  hosts: webservers
+  become: true
+  tasks:
+    - name: Install the package
+      notify: 
+        - Restart apache
+      ansible.builtin.dnf:
+        name: httpd
+        state: latest
+      register: pkg_status
+    - name: Create the directory 
+      ansible.builtin.file:
+        path: /var/www/html
+        state: directory
+        owner: root
+        group: root
+        mode: "0755"
+        setype: httpd_sys_content_t
+    - name: Content to serve
+      ansible.builtin.copy:
+        content: "Example web content"
+        dest: /var/www/html/index.html
+      notify:
+        - custom message
+    - name: Update the service
+      ansible.builtin.service:
+        name: httpd
+        state: restarted
+        enabled: true
+      notify:
+        - firewall opening port
+  handlers:
+    - name: custom message
+      ansible.builtin.debug:
+        msg: "I am called first"
+    - name: Myhandlers
+      ansible.posix.firewalld:
+        service: http
+        immediate: true
+        permanent: true
+        state: enabled
+      listen: firewall opening port
+    - name: Restart apache
+      ansible.builtin.service:
+        name: httpd
+        state: restarted
+        enabled: true

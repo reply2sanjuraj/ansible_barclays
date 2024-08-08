@@ -1,0 +1,10 @@
+---
+- name: Check the list 
+  hosts: all
+  become: false
+  gather_facts: false
+  tasks:
+    - name: The variable my_var is defined with uppercase
+      ansible.builtin.debug:
+        msg: "The value of the variable {{ my_var | default('ansible automation')| upper }} "
+...

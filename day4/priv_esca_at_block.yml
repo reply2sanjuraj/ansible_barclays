@@ -1,0 +1,36 @@
+---
+- name: Privilege Escalation at block level
+  hosts: webservers
+  become: false
+  tasks:
+  - block:
+     - name: The task requires administrative privileges
+       ansible.builtin.yum:
+         name: httpd   
+         state: present
+     - name: Content to be served
+       ansible.builtin.copy:
+         src: index.html
+         dest: /var/www/html/index.html
+     - name: Open the ports
+       ansible.posix.firewalld:
+         service: http
+         immediate: true
+         permanent: true
+         state: enabled
+     - name: Update the service 
+       ansible.builtin.service:
+         name: httpd
+         state: started
+         enabled: true
+    become: true
+  - block:
+     - name: Test the web server
+       ansible.builtin.uri:
+         url: http://{{ ansible_host }}
+         return_content: yes
+       register: webpage
+     - name: Print the web server content
+       ansible.builtin.debug:
+         var: webpage.content
+...

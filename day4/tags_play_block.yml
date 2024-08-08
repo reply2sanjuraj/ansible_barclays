@@ -1,0 +1,34 @@
+---
+- name: Setup web services
+  hosts: webservers
+  tags:
+  - setup # Tag an entire play
+  tasks:
+  - name: Install http daemon
+    ansible.builtin.yum:
+      name: httpd
+      state: present
+
+  - block:
+    - name: Ensure httpd packages are installed
+      ansible.builtin.yum:
+        name:
+        - httpd
+        - php
+        - git
+        - php-mysqlnd
+        state: present
+
+    - name: Ensure SELinux allows httpd connections to a remote database
+      ansible.builtin.seboolean:
+        name: httpd_can_network_connect_db
+        state: true
+        persistent: true
+
+    - name: Ensure httpd service is started and enabled
+      ansible.builtin.service:
+        name: httpd
+        state: started
+        enabled: true
+    tags:  # Tag a block of tasks
+    - webserver

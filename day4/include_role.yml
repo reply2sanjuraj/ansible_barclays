@@ -1,0 +1,15 @@
+---
+- name: Calling the role within a playbook
+  hosts: webservers
+  become: true
+  tasks:
+  - name: First task
+    ansible.builtin.debug:
+      msg: "First task"
+  - name: Include a role 
+    ansible.builtin.include_role:
+      name: apache
+  - name: Outcome
+    ansible.builtin.debug:
+      msg: "The role was included successfully"
+...

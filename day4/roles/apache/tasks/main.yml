@@ -1,0 +1,36 @@
+---
+# tasks file for apache
+- name: Install package
+  ansible.builtin.yum:
+    name: httpd
+    state: latest
+   
+- name: DocumentRoot exists
+  ansible.builtin.file:
+    path: /var/www/html
+    mode: '0755'
+    state: directory
+    owner: root
+    group: root
+    setype: httpd_sys_content_t
+
+- name: Configure the web server 
+  ansible.builtin.template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Firewall to open the ports
+  ansible.posix.firewalld:
+    service: http
+    immediate: true
+    permanent: true
+    state: enabled
+
+- name: Service httpd started and enabled at boot
+  ansible.builtin.service:
+    name: httpd
+    state: started
+    enabled: true 

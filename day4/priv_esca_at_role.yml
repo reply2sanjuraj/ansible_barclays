@@ -1,0 +1,13 @@
+---
+- name: Allow escalation at role level 
+  hosts: webservers
+  gather_facts: false
+  serial: 
+    - 2
+    - 10%
+    - 30%
+    - 100% 
+  roles:
+    - role: apache
+      become: true
+

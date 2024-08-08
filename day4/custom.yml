@@ -1,0 +1,21 @@
+---
+- name: Using custom fact 
+  hosts: all
+  become: true 
+  vars:
+    remotedir: /etc/ansible/facts.d
+  tasks:
+  - name: Create the directort structure 
+    ansible.builtin.file:
+      path: "{{ remotedir }}"
+      state: directory
+      owner: root
+      group: root
+      mode: "0755"
+
+  - name: Export the custom fact
+    ansible.builtin.copy:
+      src: custom.fact 
+      dest: "{{ remotedir }}"
+
+...

@@ -1,0 +1,27 @@
+---
+- name: Using Lookup plugins
+  hosts: webservers
+  become: false
+  gather_facts: true
+  tasks:
+   - name: Display the value of an existing env SHELL
+     ansible.builtin.debug:
+       msg: " The value of variable SHELL is {{ lookup('env', 'SHELL') }}"
+
+   - name: Contents of the file /etc/fstab
+     ansible.builtin.debug:
+       msg: "{{ lookup('file', '/etc/fstab') }}"
+
+   - name: Multiple file contents
+     ansible.builtin.debug:
+       msg: "{{ query('file', '/etc/fstab', '/etc/issue') }}"
+
+   - name: Display who is logged in 
+     ansible.builtin.debug:
+       msg: "{{ lookup('pipe', 'w') }}"
+
+   - name: Access the website 
+     ansible.builtin.debug:
+       msg: "{{ lookup('url', 'http://www.google.com') }}"
+       
+

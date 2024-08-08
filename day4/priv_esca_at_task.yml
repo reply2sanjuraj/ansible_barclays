@@ -1,0 +1,14 @@
+---
+- name: Privilege Escalation at task level
+  hosts: webservers
+  become: false
+  tasks:
+  - name: The task requires administrative privileges
+    ansible.builtin.yum:
+      name: perl
+      state: present
+    become: true
+  - name: Print the custom message
+    ansible.builtin.debug:
+      msg: "Hello everyone!. This task doesnot require privilege escalation"
+...
