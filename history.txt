@@ -1,0 +1,1000 @@
+  233  ansible-navigator --eei ee-supported-rhel8 
+  234  cd
+  235  lab finish develop-navigator 
+  236  curl http://servera.lab.example.com
+  237  ls -al .venv/
+  238  ls -al .venv/labs/
+  239  lab start develop-navigator 
+  240  find .venv/labs -name "develop*" 2> /dev/null 
+  241  cat .venv/labs/lib/python3.6/site-packages/do374/ansible/develop-navigator/start.yml 
+  242  ansible-navigator 
+  243  sudo yum list git 
+  244  ls
+  245  git clone https://github.com/reply2sanjuraj/ansible_barclays.git
+  246  ls
+  247  ls ansible_barclays/
+  248  cd ansible_barclays/
+  249  l
+  250  git status 
+  251  echo "test" > file1.txt
+  252  ls
+  253  git status 
+  254  git add file1.txt 
+  255  git status 
+  256  git commit -m "New file file1.txt added"
+  257  vim ~/token
+  258  git push 
+  259  git status
+  260  git branch 
+  261  git checkout -b barclays
+  262  git branch 
+  263  echo "ANSIBLE" > ansible.txt
+  264  git add .
+  265  git status 
+  266  git commit 
+  267  git status 
+  268  git push 
+  269  git push --set-upstream origin barclays
+  270  git log 
+  271  man -k git 
+  272  sudo mandb -q
+  273  man -k git 
+  274  man gittutorial
+  275  git config --global -l 
+  276  ls -al /home/student/.gitconfig
+  277  cd
+  278  git config --global user.name 'Student User'
+  279  git config --global user.email student@workstation.lab.example.com 
+  280  ls -al /home/student/.gitconfig
+  281  cat /home/student/.gitconfig
+  282  git config --global -l 
+  283  git log 
+  284  cd - 
+  285  git log 
+  286  cd - 
+  287  cd project2/
+  288  ls
+  289  cd - 
+  290  cd ansible_barclays/
+  291  rsync  -av /home/student/project2/* .
+  292  ls
+  293  vim .gitignore
+  294  git status 
+  295  git add .
+  296  git commit -m "Added ansible play book file"
+  297  git push 
+  298  vim yaml_syntax.yml
+  299  cat inventory 
+  300  ansible all -a 'rpm -qa postfix' 
+  301  vim recommend_yaml.yml
+  302  cp recommend_yaml.yml recommend_yaml1.yml 
+  303  vim recommend_yaml1.yml
+  304  cp recommend_yaml1.yml yaml_syntax1.yml
+  305  vim yaml_syntax1.yml
+  306  cat play2.yml 
+  307  ansible all --list-hosts 
+  308  sudo dnf install ansible-navigator
+  309  cat play2.yml 
+  310  ansible-navigator run play2.yml -m stdout 
+  311  vim play2.yml 
+  312  ansible-navigator run play2.yml -m stdout 
+  313  ansible-playbook  --help 
+  314  ls
+  315  cat yaml_syntax.yml 
+  316  ansible all -a 'rpm -qa postfix'
+  317  ansible-navigator run yaml_syntax.yml -m stdout -C
+  318  ansible-navigator run yaml_syntax.yml -m stdout 
+  319  ansible all -a 'rpm -qa postfix'
+  320  ansible all -a 'pidof postfix'
+  321  ansible all -a 'pidof master'
+  322  vim yaml_syntax.yml 
+  323  cat recommend_yaml.yml 
+  324  cp recommend_yaml.yml notrecommd.yml
+  325  vim notrecommd.yml
+  326  cat notrecommd.yml
+  327  ansible all -m command -a 'systemctl stop posftix'
+  328  ansible all -m command -a 'systemctl stop postfix' -u devops -b 
+  329  ansible all -m command -a 'systemctl disable postfix' -u devops -b 
+  330  ansible all -m command -a 'yum remove postfix' -u devops -b 
+  331  ansible all -m command -a 'yum remove postfix -y ' -u devops -b 
+  332  cat notrecommd.yml 
+  333  ansible-navigator run notrecommd.yml -m stdout 
+  334  vim notrecommd
+  335  vim notrecommd.yml 
+  336  cat yaml_syntax1.yml 
+  337  ls
+  338  cat recommend_yaml1.yml 
+  339  vim recommend_yaml1.yml
+  340  ansible-navigator run recommend_yaml1.yml -m stdout 
+  341  # sudo yum install httpd vsftpd 
+  342  # sudo yum installl httpd
+  343  # sudo yum install vsftpd 
+  344  cat recommend_yaml1.yml 
+  345  vim recommend_yaml1.yml
+  346  ansible all -m yum -a 'name=httpd state=absent' -u devops -b 
+  347  ansible all -m yum -a 'name=vsftpd state=absent' -u devops -b 
+  348  time ansible-playbook recommend_yaml1.yml 
+  349  cat recommend_yaml1
+  350  cat recommend_yaml1.yml 
+  351  cp recommend_yaml1.yml loop.yml
+  352  vim loop.yml
+  353  ansible all -m yum -a 'name=httpd state=absent' -u devops -b 
+  354  ansible all -m yum -a 'name=vsftpd state=absent' -u devops -b 
+  355  time ansible-playbook loop.yml 
+  356  cat loop.yml 
+  357  cat recommend_yaml1.yml 
+  358  vim var_filesyml
+  359  vim var_files.yml
+  360  cat var_files.yml 
+  361  # "{{ packages }}"
+  362  # 22 places where we cna define a variables 
+  363  sudo yum install cronie http 
+  364  # handlers 
+  365  vim block_and_rescue.yml
+  366  cat block_and_rescue.yml 
+  367  ansible-playbook block_and_rescue.yml
+  368  vim block_and_rescue.yml 
+  369  ansible-playbook block_and_rescue.yml
+  370  cat block_and_rescue.yml 
+  371  cp block_and_rescue.yml notify.yml
+  372  vim notify.yml
+  373  cat notify.yml
+  374  ansible all -m yum -a 'name=httpd state=absent' -u devop -b 
+  375  ansible all -m yum -a 'name=httpd state=absent' -u devops -b 
+  376  cat not
+  377  cat notify.yml 
+  378  ansible-playbook notify.yml --syntax-check 
+  379  ansible-playbook notify.yml -C
+  380  ansible-playbook notify.yml
+  381  cat notify.yml 
+  382  # listen -- directive that is used for trigger the events 
+  383  cat block_and_rescue.yml
+  384  cp block_and_rescue.yml block_and_rescue_always.yml 
+  385  vim block_and_rescue_always.yml
+  386  ansible-playbook  block_and_rescue_always.yml --syntax-check 
+  387  ansible-playbook  block_and_rescue_always.yml -C
+  388  vim block_and_rescue_always.yml
+  389  ansible-playbook  block_and_rescue_always.yml -C
+  390  ansible-playbook  block_and_rescue_always.yml
+  391  cat block_and_rescue_always.yml 
+  392  ansible-navigator images 
+  393  ansible-navigator collections list 
+  394  ansible-navigator doc ansible.builtin.service 
+  395  ansible-navigator doc ansible.builtin.service -m stdout 
+  396  ansible-navigator doc ansible.posix.firewalld -m stdout --eei ee-minimal-rhel8
+  397  # ansible-navigator doc ansible.posix.firewalld -m stdout --eei ee-minimal-rhel8 
+  398  podman login hub.lab.example.com -u student 
+  399  ansible-navigator doc ansible.posix.firewalld -m stdout --eei ee-minimal-rhel8 
+  400  ansible-navigator doc ansible.posix.firewalld -m stdout --eei ee-supported-rhel8 
+  401  ansible-galaxy collection install community.mysql 
+  402  ansible-galaxy collection list 
+  403  vim ansible.cfg 
+  404  cat ansible.cfg 
+  405  mkdir collections 
+  406  ansible-galaxy collection list 
+  407  ansible-galaxy collection install ansible.netcommon -p collections/
+  408  ansible-galaxy collection list 
+  409  vim ansible.cfg
+  410  ansible-galaxy collection list 
+  411  cat ansible.cfg 
+  412  vim collections/requirements.yml
+  413  cat collections/requirements.yml
+  414  ansible-galaxy collection install -r collections/requirements.yml -p collections/
+  415  cat ansible.cfg 
+  416  cat collections/requirements.yml 
+  417  echo ANSIBLE_GALAXY_SERVER_AUTOMATION_HUB_TOKEN 
+  418  echo ${ANSIBLE_GALAXY_SERVER_AUTOMATION_HUB_TOKEN}
+  419  is
+  420  history 
+  421  tree collections/
+  422  history 
+  423  git add .
+  424  git commit -m "sample codes"
+  425  git push 
+  426  ls
+  427  rm -f play2-artifact-2024-08-0*.json
+  428  rm -f yaml_syntax-artifact-2024-08-06T09\:0*.json
+  429  ls
+  430  rm -f recommend_yaml1-artifact-2024-08-06T09\:14\:15.436140+00\:00.json 
+  431  rm -f notrecommd-artifact-2024-08-06T09\:10\:05.874424+00\:00.json 
+  432  ls
+  433  cat ansible.cfg 
+  434  vim vars_prompt.yml
+  435  cat inventory 
+  436  cat vars_prompt.yml 
+  437  podman images 
+  438  vim ansible-navigator.yml
+  439  ansible-navigator run vars_prompt.yml 
+  440  vim ansible-navigator.yml 
+  441  ansible-navigator run vars_prompt.yml 
+  442  ansible servera.lab.example.com -m command -a 'rpm -qa vsftpd' -u devops -b 
+  443  ansible servera.lab.example.com -m yum -a 'name=vsftpd state=absent' -u devops -b 
+  444  ansible servera.lab.example.com -m command -a 'rpm -qa vsftpd tree' -u devops -b 
+  445  ansible servera.lab.example.com -m yum -a 'name=tree state=absent' -u devops -b 
+  446  lls
+  447  ls
+  448  vim users.yml
+  449  vim add_users.yml
+  450  # ansible-navigator doc ansible.posix.firewalld -m stdout --eei ee-supported-rhel8 
+  451  podman images 
+  452  ansible-navigator doc ansible.posix.firewalld -m stdout --eei ee-supported-rhel8 
+  453  ansible-navigator doc ansible.posix.firewalld -m stdout --eei ee-supported-rhel8 --pp missing 
+  454  vim add_users.yml
+  455  cat users.yml 
+  456  vim add_users.yml
+  457  cat add_users.yml
+  458  ls
+  459  mkdir -p day3 
+  460  cp ansible.cfg ansible-navigator.yml inventory day3/
+  461  cp vars_prompt.yml users.yml add_users.yml day3/
+  462  cd day3/
+  463  ls
+  464  ansible all --list-hosts
+  465  cat vars_prompt.yml 
+  466  cat users.yml 
+  467  cat add_users.yml 
+  468  cp inventory inventory1
+  469  vim inventory1
+  470  ansible all -i inventory1 --list-hosts
+  471  vim inventory1
+  472  vim variables.yml
+  473  cat variables.yml 
+  474  cat inventory1
+  475  ansible-navigator run variables.yml 
+  476  vim variables.yml 
+  477  ansible-navigator run variables.yml 
+  478  ansible-navigator run variables.yml -i inventory1 
+  479  vim inventory1 
+  480  cp inventory1 inventory2
+  481  vim inventory2
+  482  ansible all --list-hosts -i inventory2
+  483  ansible-navigator inventory -i inventory2 
+  484  ansible-navigator inventory -i inventory2 --list
+  485  vim ansible-navigator.yml 
+  486  ansible-navigator inventory -i inventory2 --list 
+  487  cp ansible.cfg ansible1.cfg
+  488  vim ansible1.cfg
+  489  cat inventory2 
+  490  cat inventory1
+  491  vim sequence.yml
+  492  ansible-navigator run sequence.yml -i inventory1 --syntax-check 
+  493  cat inventory1 
+  494  ansible-navigator config 
+  495  ls
+  496  ansible-navigator config list 
+  497  ansible-navigator config dump -m interactive
+  498  vim /home/student/ansible_barclays/day3/ansible.cfg
+  499  ansible-navigator config dump -m interactive
+  500  ansible --version 
+  501  pwd
+  502  echo $ANSIBLE_CONFIG 
+  503  touch /tmp/myansible.cfg 
+  504  export ANSIBLE_CONFIG=/tmp/myansible.cfg
+  505  echo ${ANSIBLE_CONFIG}
+  506  ansible --version 
+  507  unset ANSIBLE_CONFIG
+  508  echo ${ANSIBLE_CONFIG}
+  509  ansible --version 
+  510  cd /tmp/
+  511  ls
+  512  ansible --version 
+  513  ls myansible.cfg 
+  514  ls -al ~/.ansible.cfg 
+  515  ls -l /etc/ansible/ansible.cfg
+  516  cd -
+  517  cat ansible
+  518  cat ansible.cfg 
+  519  ls 
+  520  cat ansible-navigator.
+  521  cat ansible-navigator.yml 
+  522  vim ansible-navigator.yml
+  523  cat ansible-navigator.yml
+  524  rpm -qa ansible-navigator 
+  525  rpm -qd ansible-navigator
+  526  rpm -ql ansible-navigator
+  527  ansible-navigator 
+  528  vim ansible-navigator.yml 
+  529  ansible-navigator -m interactive
+  530  ansible-navigator settings -m stdout --effective > sample.yml
+  531  vim sample.yml 
+  532  # ansible-navigator run vars_prompt.yml 
+  533  cat ansible-navigator.yml 
+  534  # ansible-navigator run vars_prompt.yml 
+  535  ls
+  536  ansible-navigator run vars_prompt.yml 
+  537  ansible all -m commmand -a 'rpm -qa vsftpd tree'
+  538  ansible all -m command -a 'rpm -qa vsftpd tree'
+  539  cat vars_prompt.yml 
+  540  ansible-navigator run vars_prompt.yml 
+  541  vim vars_prompt.yml 
+  542  ansible-navigator run vars_prompt.yml 
+  543  cat vars_prompt.yml 
+  544  cat sample.yml 
+  545  ls
+  546  cat ansible-navigator.yml 
+  547  vim inventorya.py
+  548  ls
+  549  cat inventory
+  550  mkdir myinventory
+  551  mv inventorya.py myinventory/
+  552  echo serverc > myinventory/hosts 
+  553  vim ansible.cfg 
+  554  vim ansible1.cfg 
+  555  cp ansible1.cfg ansible2.cfg
+  556  vim ansible2.cfg
+  557  ls
+  558  mv ansible.cfg ansible.cfg.bkp
+  559  mv ansible2.cfg ansible.cfg
+  560  cat ansible-navigator.yml 
+  561  pwd
+  562  ls
+  563  cat inventory
+  564  cat inventory1 
+  565  ansible-navigator inventory --list -i inventory 
+  566  cat inventory
+  567  cat inventory1
+  568  ansible-navigator inventory --list -i inventory1 
+  569  cat inventory2
+  570  ansible-navigator inventory --list -i inventory2
+  571  ansible-navigator inventory --list -i inventory2 -o yaml
+  572  ansible-navigator inventory --graph -i inventory2 
+  573  ansible-navigator inventory --host servera.lab.example.com -i inventory2 
+  574  ansible-navigator inventory --host servera.lab.example.com -i inventory1 
+  575  ansible-navigator doc -m stdout -t inventory --list 
+  576  ansible-navigator doc -m stdout -t inventory redhat.satellite.foreman 
+  577  ansible-navigator doc -m stdout -t inventory --list 
+  578  ansible-navigator collection list 
+  579  ansible-navigator collections list 
+  580  ansible-navigator collections list -m interactive 
+  581  ls
+  582  ls myinventory/
+  583  ansible all --list-hosts -i inventory1
+  584  ansible all --list-hosts -i myinventory/hosts 
+  585  ansible all --list-hosts -i myinventory/inventorya.py 
+  586  file myinventory/inventorya.py
+  587  ls -l myinventory/inventorya.py
+  588  chmod +x myinventory/inventorya.py
+  589  ls -l myinventory/inventorya.py
+  590  ansible all --list-hosts -i myinventory/inventorya.py 
+  591  myinventory/inventorya.py 
+  592  myinventory/inventorya.py --list
+  593  myinventory/inventorya.py --host servera.lab.example.com
+  594  cat myinventory/inventorya.py 
+  595  cat /etc/hosts
+  596  ls myinventory/
+  597  ansible all --list-hosts -i myinventory/
+  598  cat myinventory/hosts 
+  599  ansible webserver --list-hosts -i myinventory/
+  600  ansible webservers --list-hosts -i myinventory/
+  601  ansible-navigator inventory --list -m interactive
+  602  ansible --version 
+  603  cat /home/student/ansible_barclays/day3/ansible.cfg
+  604  ls myinventory/
+  605  vim myinventory/hosts 
+  606  cat myinventory/hosts
+  607  ansible all --list-hosts -i myinventory/hosts 
+  608  ansible apac --list-hosts -i myinventory/hosts 
+  609  ansible dev --list-hosts -i myinventory/hosts 
+  610  vim myinventory/hosts
+  611  ansible dev --list-hosts -i myinventory/hosts 
+  612  ansible apac --list-hosts -i myinventory/hosts 
+  613  ansible-navigator inventory -i myinventory/hosts --graph
+  614  vim myinventory/hosts 
+  615  ansible-navigator inventory -i myinventory/hosts --graph
+  616  vim myinventory/hosts 
+  617  ansible-navigator inventory -i myinventory/hosts --graph
+  618  ansible-navigator inventory --help 
+  619  ansible-navigator inventory -m stdout --help 
+  620  ansible-navigator --help | less
+  621  ansible-navigator inventory --help | less
+  622  ansible-navigator inventory -i inventory1 --list -m stdout 
+  623  ansible-navigator inventory -i inventory1 --list -m stdout --output --format yaml mylist.yml
+  624  ansible-navigator inventory -i inventory1 --list -m stdout --output mylist.yml
+  625  cat mylist.yml 
+  626  ansible-navigator inventory -i inventory1 --list -m stdout --yaml --output mylist.yml
+  627  cat mylist.yml 
+  628  cat inventory1 
+  629  cat vars_prompt.yml 
+  630  vim boolean.yml
+  631  ansible --version 
+  632  cat /home/student/ansible_barclays/day3/ansible.cfg
+  633  ls myinventory/
+  634  ansible all --list-hosts 
+  635  ansible all -a 'rpm -qa vsftpd' 
+  636  ansible-navigator run boolean.yml 
+  637  vim boolean.yml 
+  638  ansible-navigator run boolean.yml 
+  639  cat boolean.yml 
+  640  ls
+  641  cat variables.yml 
+  642  cat myinventory/hosts 
+  643  vim myinventory/hosts
+  644  cat myinventory/inventorya.py 
+  645  cat variables.yml 
+  646  vim variables.yml 
+  647  cat inventory1 
+  648  vim ansible.cfg
+  649  ansible-navigator run variables.yml 
+  650  vim variables.yml 
+  651  ansible-navigator run variables.yml 
+  652  cat inventory1 
+  653  cat variables.yml 
+  654  ls
+  655  mkdir group_vars
+  656  vim group_vars/webserver
+  657  cat group_vars/webserver
+  658  ansible-navigator run variables.yml 
+  659  ls
+  660  mkdir host_vars
+  661  echo "my_pkg: telnet" > host_vars/servera.lab.example.com
+  662  ls host_vars/
+  663  vim inventory1 
+  664  cat host_vars/servera.lab.example.com 
+  665  ansible-navigator run variables.yml 
+  666  vim variables.yml 
+  667  ansible-navigator run variables.yml 
+  668  ansible-navigator run variables.yml -e my_pkg=barclays
+  669  ls
+  670  vim sequence.yml 
+  671  ansible-navigator run sequence.yml --syntax-check 
+  672  ansible-navigator run sequence.yml -C
+  673  vim sequence.yml 
+  674  ansible-navigator run sequence.yml -C
+  675  ansible-navigator run sequence.yml
+  676  vim sequence.yml 
+  677  ansible-navigator run sequence.yml
+  678  vim sequence.yml 
+  679  ansible-navigator run sequence.yml
+  680  ansible all -m yum -a 'name=httpd state=absent' -u devops -b 
+  681  ansible-navigator run sequence.yml
+  682  vim sequence.yml 
+  683  ansible all -m yum -a 'name=httpd state=absent' -u devops -b 
+  684  ansible-navigator run sequence.yml
+  685  vim facts.yml
+  686  cp sequence.yml facts.yml 
+  687  vim facts.yml
+  688  # ansible-navigator run facts.yml 
+  689  cat facts.yml 
+  690  vim facts.yml 
+  691  ansible-navigator run facts.yml 
+  692  ansible all -a 'curl -s localhost' 
+  693  cat ansible.cfg
+  694  cat facts.yml 
+  695  cd ..
+  696  git add .
+  697  git commit -m "sample files"
+  698  git push 
+  699  ls
+  700  mkdir day4
+  701  cp day3/ansible.cfg day4/
+  702  cp day3/ansible-navigator.yml day4/
+  703  cp day3/inventory day4/
+  704  cd day4/
+  705  ls
+  706  vim ansible
+  707  vim ansible.cfg 
+  708  vim inventory 
+  709  cat ansible-navigator.yml 
+  710  vim ansible-navigator.yml
+  711  ls
+  712  vim priv_esca_in_play.yml
+  713  vim inventory 
+  714  ls
+  715  ansible-navigator run priv_esca_in_play.yml --syntax-check 
+  716  ls
+  717  cp priv_esca_in_play.yml priv_esca_at_task.yml 
+  718  vim priv_esca_at_task.yml
+  719  cat priv_esca_at_task.yml 
+  720  ansible-navigator run priv_esca_at_task.yml --syntax-check 
+  721  cp priv_esca_at_task.yml priv_esca_at_block
+  722  vi priv_esca_at_block
+  723  ansible all --list-hosts
+  724  cat ansible.cfg 
+  725  vim ansible.cfg
+  726  cat ansible.cfg 
+  727  whoami 
+  728  ansible all -m command -a 'whoami' 
+  729  ansible all -m user -a 'name=user101 state=present' 
+  730  ansible all -m user -a 'name=user101 state=present' -b 
+  731  ansible all -a 'tail /etc/passwd' 
+  732  cat ansible.cfg 
+  733  vim ansible.cfg
+  734  cat ansible.cfg 
+  735  cat priv_esca_in_play.yml 
+  736  vim priv_esca_in_play.yml
+  737  ansible-navigator run priv_esca_in_play.yml --syntax-check 
+  738  ansible all -m setup -a 'filter=ansible_*' | grep user 
+  739  # ohai -- chef
+  740  # puppet
+  741  ansible-navigator doc ansible.builtin.setup -m stdout 
+  742  ansible all -m setup -a 'filter=ansible_*' | grep user 
+  743  cat priv_esca_in_play.yml 
+  744  ansible-navigator run priv_esca_in_play.yml 
+  745  cat priv_esca_in_play.yml 
+  746  ansible --help | grep -C3 become 
+  747  ansible --help | grep -C10 become 
+  748  vim priv_esca_in_play.yml 
+  749  ansible-navigator run priv_esca_in_play.yml 
+  750  vim priv_esca_in_play.yml 
+  751  cp priv_esca_in_play.yml systeminfo.txt
+  752  vim systeminfo.txt
+  753  ansible all -m setup -a 'filter=ansible_*' | grep processor 
+  754  vim systeminfo.txt
+  755  ansible all -m setup -a 'filter=ansible_*' | grep memory
+  756  ansible all -m setup -a 'filter=ansible_*' | grep -C3 memory
+  757  vim systeminfo.txt
+  758  cat systeminfo.txt 
+  759  mv systeminfo.txt systeminfo.yml
+  760  vim systeminfo.yml
+  761  ansible-navigator run systeminfo.yml --syntax-check 
+  762  ansible all -a 'ls /tmp' 
+  763  ansible-navigator run systeminfo.yml
+  764  ansible all -a 'ls /tmp' 
+  765  ansible all -a 'cat /tmp/serverb.txt' 
+  766  ansible all -m file -a 'path=/tmp/serverb.txt state=absent' 
+  767  ansible all -m file -a 'path=/tmp/serverb.txt state=absent' -b 
+  768  ansible all -a 'cat /tmp/serverb.txt' 
+  769  vim systeminfo.yml 
+  770  ansible-navigator run systeminfo.yml 
+  771  vim systeminfo.yml 
+  772  ansible-navigator run systeminfo.yml 
+  773  vim ansible_facts.yml
+  774  ansible-navigator run ansible_facts.yml 
+  775  vim ansible_facts.yml
+  776  ansible-navigator run ansible_facts.yml 
+  777  cat ansible_facts.yml
+  778  ansible-navigator run ansible_facts.yml 
+  779  cat priv_esca_at_task.yml 
+  780  vim priv_esca_at_task.yml
+  781  ansible-navigator run priv_esca_at_task.yml --syntax-check 
+  782  ansible-navigator run priv_esca_at_task.yml 
+  783  cat priv_esca_at_task.yml 
+  784  ansible-navigator doc ansible.builtin.setup -m stdout 
+  785  cat priv_esca_at_task.yml 
+  786  vim priv_esca_at_block 
+  787  mv priv_esca_at_block priv_esca_at_block.yml
+  788  vim priv_esca_at_block.yml
+  789  cat priv_esca_at_block.yml
+  790  ansible all -a 'ls -ld /var/www/html'
+  791  ls
+  792  vim index.html
+  793  ansible-navigator run priv_esca_at_block.yml --syntax-check 
+  794  vim index.html
+  795  vim /home/student/ansible_barclays/day4/priv_esca_at_block.yml
+  796  ansible-navigator run priv_esca_at_block.yml --syntax-check 
+  797  vim /home/student/ansible_barclays/day4/priv_esca_at_block.yml
+  798  ansible-navigator run priv_esca_at_block.yml --syntax-check 
+  799  ansible-navigator run priv_esca_at_block.yml --step 
+  800  ls
+  801  mkdir roles
+  802  cd roles/
+  803  ansible-galaxy role init user.example
+  804  tree .
+  805  rm -rf user.example
+  806  ansible-galaxy role init apache
+  807  tree .
+  808  vim apache/tasks/main.yml 
+  809  vim apache/templates/index.html.j2
+  810  cd ..
+  811  cat roles/apache/tests/test.yml 
+  812  vim priv_esca_at_role.yml
+  813  ansible all -m command -a 'rpm -qa httpd' 
+  814  vim priv_esca_at_block.yml 
+  815  cp priv_esca_at_block.yml cleanup.yml
+  816  ansible all -m yum -a 'name=httpd state=absent'  -u devops -b 
+  817  ansible all -m firewalld -a 'service=http immediate=true permanent=true state=disabled' -u devops -b 
+  818  ansible all -m ansible.posix.firewalld -a 'service=http immediate=true permanent=true state=disabled' -u devops -b 
+  819  cat priv_esca_at_role.yml 
+  820  ansible-navigator run priv_esca_at_role.yml --syntax-check 
+  821  ansible-navigator run priv_esca_at_role.yml 
+  822  curl serverb 
+  823  history 
+  824  ansible all -m yum -a 'name=httpd state=absent'  -u devops -b 
+  825  cp priv_esca_at_role.yml pre_tasks_tasks_post_tasks.yml
+  826  vim pre_tasks_tasks_post_tasks.yml
+  827  ansible-navigator run pre_tasks_tasks_post_tasks.yml --syntax-chekc 
+  828  ansible-navigator run pre_tasks_tasks_post_tasks.yml --syntax-check
+  829  ansible-navigator run pre_tasks_tasks_post_tasks.yml 
+  830  cat pre_tasks_tasks_post_tasks.yml 
+  831  tree 
+  832  ansible-galaxy rle list 
+  833  ansible-galaxy role list 
+  834  vim ansible.cfg 
+  835  ansible-galaxy role list 
+  836  cat inventory 
+  837  vim inventory
+  838  cat inventory
+  839  vim inventory
+  840  grep serverb /etc/host
+  841  grep serverb /etc/hosts 
+  842  vim inventory
+  843  ls
+  844  vim handler.yml
+  845  vim handler_listen.yml
+  846  vim force_handlers.yml
+  847  vim tags.yml
+  848  vim tags_play_block.yml
+  849  vim optime.yml
+  850  ls
+  851  vim include_role.yml
+  852  ls roles/
+  853  cat priv_esca_at_role.yml 
+  854  cat include_role.yml 
+  855  # import_role -- static (collects the roles contents and metadata before the task execution take place)
+  856  ansible-navigator run include_role.yml --syntax-check 
+  857  ansible-navigator run include_role.yml 
+  858  vim include_role.yml
+  859  ansible-navigator run include_role.yml 
+  860  vim include_role.yml 
+  861  ansible-navigator run include_role.yml 
+  862  curl serverb 
+  863  ansible all -m yum -a 'name=httpd state=absent'  -u devops -b 
+  864  ansible-navigator run include_role.yml 
+  865  curl serverb 
+  866  cat roles/apache/tasks/main.yml 
+  867  cat roles/apache/templates/index.html.j2 
+  868  curl serverb 
+  869  ansible all -m yum -a 'name=httpd state=absent'  -u devops -b 
+  870  ansible all -m file -a 'path=/var/www/html state=absent' -u devops -b 
+  871  cat handler.yml 
+  872  vim handler.yml
+  873  ansible-navigator run handler.yml 
+  874  ansible all -m yum -a 'name=httpd state=absent'  -u devops -b 
+  875  ansible all -m file -a 'path=/var/www/html state=absent' -u devops -b 
+  876  vim handler.yml
+  877  ansible-navigator run handler.yml 
+  878  vim handler.yml 
+  879  ansible-navigator run handler.yml 
+  880  vim force_handlers.yml 
+  881  ansible-navigator run force_handlers.yml 
+  882  ansible all -m yum -a 'name=httpd state=absent'  -u devops -b 
+  883  ansible-navigator run force_handlers.yml 
+  884  ls
+  885  vim handler_listen.yml 
+  886  ansible all -m yum -a 'name=httpd state=absent'  -u devops -b 
+  887  ansible-navigator run handler_listen.yml 
+  888  vim handler_listen.yml 
+  889  ansible-navigator run handler_listen.yml 
+  890  ansible-navigator run handler_listen.yml -vvvv
+  891  ansible all -m yum -a 'name=httpd state=absent'  -u devops -b 
+  892  ansible-navigator run handler_listen.yml -vvvv
+  893  ansible all -m yum -a 'name=httpd state=absent'  -u devops -b 
+  894  ansible-navigator run handler_listen.yml
+  895  vi handler_listen.yml 
+  896  ansible all -m yum -a 'name=httpd state=absent'  -u devops -b 
+  897  vim handler_listen.yml 
+  898  ansible-navigator doc file 
+  899  vim handler_listen.yml 
+  900  ansible all -m file -a 'path=/var/www/html state=absent' -u devops -b 
+  901  ansible-navigator run handler_listen.yml
+  902  vim handler_listen.yml 
+  903  ansible-navigator run handler_listen.yml
+  904  vim handler_listen.yml 
+  905  vim order_directive.yml
+  906  vim inventory 
+  907  ansible all --list-host 
+  908  cat inventory 
+  909  cat order_directive.yml 
+  910  vim inventory 
+  911  ansible all --list-host 
+  912  ansible-navigator run order_directive.yml 
+  913  vim order_directive.yml 
+  914  ansible-navigator run order_directive.yml 
+  915  vim order_directive.yml 
+  916  ansible-navigator run order_directive.yml 
+  917  vim tags.yml 
+  918  ansible all -list-hosts 
+  919  ansible all --list-hosts 
+  920  # ansible-navigator run tags.yml --skip-tags=setup
+  921* cat tags.yml
+  922  # ansible-navigator run tags.yml --list-tags
+  923  ansible-navigator run tags.yml --list-tags
+  924  ansible-navigator run tags.yml --skip-tags=install
+  925  vim tags.yml 
+  926  ansible-navigator run tags.yml --skip-tags=install
+  927  ansible-navigator run tags.yml --tags=install
+  928  cat tags.yml 
+  929  vim ansible.cfg 
+  930  ls
+  931  cd ..
+  932  ls
+  933  cd day3/
+  934  ls
+  935  vim sequence.yml 
+  936  cd ../day4/
+  937  ks
+  938  vim priv_esca_at_role.yml 
+  939  ansible all --list-hosts 
+  940  vim inventory 
+  941  ansible all --list-hosts 
+  942  ansible all -m file -a 'path=/var/www/html state=absent' -u devops -b 
+  943  ansible all -m yum -a 'name=httpd state=absent'  -u devops -b 
+  944  vim roles/apache/tasks/main.yml 
+  945  cat priv_esca_at_role.yml 
+  946  whatis time
+  947  ansible-navigator doc -t plugin -l 
+  948  ansible-navigator doc -t callback -l 
+  949  ansible-navigator doc -t callback ansible.posix.timer
+  950  vim ansible.cfg 
+  951  cat priv_esca_at_role.yml 
+  952  ansible-navigator run priv_esca_at_role.yml
+  953  vim ansible.cfg 
+  954  history 
+  955  ansible all -m file -a 'path=/var/www/html state=absent' -u devops -b
+  956  ansible all -m yum -a 'name=httpd state=absent'  -u devops -b 
+  957* vim 
+  958  ansible-navigator run priv_esca_at_role.yml
+  959  history 
+  960  ansible all -m file -a 'path=/var/www/html state=absent' -u devops -b
+  961  ansible all -m yum -a 'name=httpd state=absent'  -u devops -b 
+  962  vim ansible.cfg 
+  963  vim roles/apache/templates/index.html.j2 
+  964  vim priv_esca_at_role.yml 
+  965  ansible-navigator run priv_esca_at_role.yml
+  966  ansible all -m file -a 'path=/var/www/html state=absent' -u devops -b
+  967  ansible all -m yum -a 'name=httpd state=absent'  -u devops -b 
+  968  vim priv_esca_at_role.yml 
+  969  ansible-navigator run priv_esca_at_role.yml
+  970  vim priv_esca_at_role.yml 
+  971  history 
+  972  ansible all -m file -a 'path=/var/www/html state=absent' -u devops -b
+  973  ansible all -m yum -a 'name=httpd state=absent'  -u devops -b 
+  974  cat priv_esca_at_role.yml 
+  975  ansible-navigator run priv_esca_at_role.yml
+  976  cat priv_esca_at_role.yml
+  977  vi lineinfile.yml
+  978  ansible all -m command -a 'cat /etc/motd' 
+  979  vim ansible.cfg 
+  980  ansible-navigator run lineinfile.yml
+  981  ansible all -m command -a 'cat /etc/motd' 
+  982  vim ansible.cfg 
+  983  vim lineinfile.yml 
+  984  ansible-navigator run lineinfile.yml
+  985  vim ansible.cfg 
+  986  ls
+  987  vim lookup.yml
+  988  mv lookup.yml lookup-and_query.yml 
+  989  vim defaultUser.ym
+  990  vim defaultUser.yml
+  991  ansible-navigator run defaultUser.yml --syntax-check 
+  992  ansible-navigator run defaultUser.yml 
+  993  ansible all -a 'id samsung' 
+  994  ansible all -a 'id dell' 
+  995  ansible all -m user -a 'name=dell state=absent' -u devops -b 
+  996  vim defaultUser.yml 
+  997  vim defaultUser.yml
+  998  ansible-navigator run defaultUser.yml --syntax-check 
+  999  ansible-navigator run defaultUser.yml 
+ 1000  ansible all -a 'tail -n3 /etc/passwd' 
+ 1001  ansible all -m user -a 'name=samsung state=absent' -u devops -b 
+ 1002  vim defaultUser.yml
+ 1003  ansible-navigator doc -t plugin -l
+ 1004  ansible-navigator doc -t lookup -l
+ 1005  ansible-navigator doc -t lookup password
+ 1006  ls
+ 1007  vim list.yml
+ 1008  vim vars.yml
+ 1009  cp vars.yml capitalize.yml
+ 1010  vim capitalize.yml
+ 1011  ls
+ 1012  ansible-navigator doc -t xyz -l 
+ 1013  ansible-navigator doc -t lookup -l  
+ 1014  cat capitalize.yml 
+ 1015  ansible-navigator run capitalize.yml -e my_var="hello world"
+ 1016  ansible-navigator run capitalize.yml 
+ 1017  cat capitalize.yml 
+ 1018  cp  capitalize.yml upper.yml
+ 1019  vim upper.yml
+ 1020  ansible-navigator run upper.yml 
+ 1021  cat list.yml 
+ 1022  cat vars.yml 
+ 1023  ansible-navigator run vars.yml 
+ 1024  cat list.yml 
+ 1025  vim vars.yml 
+ 1026  ansible-navigator run vars.yml 
+ 1027  vim vars.yml 
+ 1028  cat vars.yml 
+ 1029  cat defaultUser.yml 
+ 1030  vim defaultUser.yml
+ 1031  cat defaultUser.yml 
+ 1032  # ansible-navigator run defaultUser.yml 
+ 1033  ansible all -a 'grep samsung /etc/passwd' 
+ 1034  ansible-navigator run defaultUser.yml 
+ 1035  ansible all -a 'grep samsung /etc/passwd' 
+ 1036  cat lookup-and_query.yml 
+ 1037  echo ${SHELL}
+ 1038  env 
+ 1039  cat lookup-and_query.yml 
+ 1040  env | grep -i shell
+ 1041  cat /etc/fstab 
+ 1042  ansible-navigator run lookup-and_query.yml 
+ 1043  ansible-navigator run lookup-and_query.yml  --step 
+ 1044  ansible-navigator run lookup-and_query.yml  --step --ee false 
+ 1045  cat lookup-and_query.yml 
+ 1046  ansible-navigator doc -t lookup -l 
+ 1047  ansible-navigator doc -t lookup password
+ 1048  ansible-navigator doc -t lookup with_lists
+ 1049  ansible-navigator doc -t lookup with_list
+ 1050  ansible-navigator doc -t lookup -l 
+ 1051  ansible-navigator doc -t lookup list 
+ 1052  ansible-navigator doc -t lookup dict
+ 1053  sudo yum list python3-netaddr 
+ 1054  ansible all -m yum -a 'name=python3-netaddr state=present' -u devops -b
+ 1055  sudo yum install python3-netaddr 
+ 1056  ansible-navigator doc -t abc -l 
+ 1057  ansible-navigator doc -t netconf -l 
+ 1058  ansible-navigator doc -t connection -l 
+ 1059  ansible-navigator doc -t lookup -l 
+ 1060  ansible-navigator doc -t abc -l 
+ 1061  vim custom.fact 
+ 1062  vim custom.yml
+ 1063  ansible all -m setup | less
+ 1064  ansible all -a 'ls -l /etc/ansible/facts.d'
+ 1065  ansible-navigator run custom.yml 
+ 1066  ansible all -m setup | grep custom -C3 
+ 1067  cat custom.fact 
+ 1068  cat custom.yml 
+ 1069  cd ..
+ 1070  git add .
+ 1071  git commit -m "new files "
+ 1072  git push 
+ 1073  ls
+ 1074  mkdir day5
+ 1075  cd day5
+ 1076  cp ../day4/ansible.cfg .
+ 1077  cp ../day4/ansible-navigator.yml .
+ 1078  cp ../day4/inventory .
+ 1079  vim inventory 
+ 1080  cat inventory 
+ 1081  cat ansible.cfg 
+ 1082  vim ansible.cfg
+ 1083  cat ansible.cfg
+ 1084  cat ansible-navigator.yml 
+ 1085  ansible all -m command -a 'rpm -qa httpd'
+ 1086  vim cleanup.yaml
+ 1087  ansible-navigator run cleanup.yaml --pae false --syntax-check 
+ 1088  ansible-navigator run cleanup.yaml --pae false 
+ 1089  vim delegate_tasks.yml
+ 1090  cp delegate_tasks.yml delegate_facts.yml 
+ 1091  ls
+ 1092  vim delegate_tasks.yml 
+ 1093  cat ansible.cfg 
+ 1094  cat inventory 
+ 1095  cat cleanup.yaml 
+ 1096  history 
+ 1097  cat cleanup.yaml 
+ 1098  vim delegate_tasks.yml 
+ 1099  vim delegate_facts.yml 
+ 1100  vim delegate_tasks.yml 
+ 1101  cat inventory 
+ 1102  ls
+ 1103  mkdir roles 
+ 1104  cd roles/
+ 1105  ansible-galaxy role init motd
+ 1106  cd motd/
+ 1107  vim tasks/main.yml 
+ 1108  vim templates/motd.j2
+ 1109  vim defaults/main.yml 
+ 1110  cd ..
+ 1111  cat ansible.cfg 
+ 1112  cp inventory inventory1
+ 1113  vim inventory1
+ 1114  ansible-galaxy role list 
+ 1115  ansible-galaxy role list  | head 
+ 1116  cat ansible.cfg 
+ 1117  cat inventory
+ 1118  cat delegate_tasks.yml 
+ 1119  ansible all --list-hosts 
+ 1120  ansible-navigator run delegate_tasks.yml --pae false --syntax-check 
+ 1121  ansible-navigator run delegate_tasks.yml --pae false
+ 1122  cat delegate_tasks.yml 
+ 1123  # ansible_host -- special inventory variables 
+ 1124  cat delegate_facts.yml 
+ 1125  cat inventory
+ 1126  ansible-navigator run delegate_facts.yml --pae false --syntax-check 
+ 1127  ansible-navigator run delegate_facts.yml --pae false
+ 1128  ansible-navigator run delegate_facts.yml --pae false -vv
+ 1129  cat delegate_facts.yml 
+ 1130  ansible-navigator config dump -m interactive 
+ 1131  cp delegate_tasks.yml runonce.yml
+ 1132  vim runonce.yml
+ 1133  vim inventory
+ 1134  ansible all --list-hosts 
+ 1135  ansible-navigator run runonce.yml --pae false --syntax-check 
+ 1136  # ansible-navigator run runonce.yml --pae false 
+ 1137  cat ansible.cfg 
+ 1138  ansible-navigator run runonce.yml --pae false 
+ 1139  ls
+ 1140  ls roles/
+ 1141  cd ..
+ 1142  mkdir day5_collection 
+ 1143  cp day5/ansible.cfg day5_collection/
+ 1144  cp day5/ansible-navigator.yml day5_collection/
+ 1145  cp day5/inventory day5_collection/
+ 1146  cd day5_collection/
+ 1147  ls
+ 1148  vim ansible.cfg 
+ 1149  vim inventory 
+ 1150  vim ansible-navigator.yml 
+ 1151  ls
+ 1152  ansible all --list-hosts
+ 1153  ls
+ 1154  ansible-galaxy collection init example.collection
+ 1155  ls
+ 1156  tree example/
+ 1157  vim example/collection/galaxy.yml 
+ 1158  mkdir example/collection/meta
+ 1159  vim example/collection/meta/runtime.yml
+ 1160  cat example/collection/meta/runtime.yml
+ 1161  cd example/collection/roles/
+ 1162  ls
+ 1163  ansible-galaxy role init mymotd
+ 1164  tree 
+ 1165  vim mymotd/tasks/main.yml 
+ 1166  cat mymotd/tasks/main.yml
+ 1167  vim mymotd/template/motd.j2
+ 1168  vim mymotd/templates/motd.j2
+ 1169  cat mymotd/templates/motd.j2
+ 1170  cd ..
+ 1171  tree
+ 1172  ls
+ 1173  pwd
+ 1174  ansible-galaxy collection build 
+ 1175  ls
+ 1176  cd ..
+ 1177  pwd
+ 1178  ls
+ 1179  vim ansible.cfg 
+ 1180  cat ansible.cfg 
+ 1181  ls
+ 1182  mkdir collections
+ 1183  vim collections/requirements.yml
+ 1184  ls collections/
+ 1185  ansible-galaxy collection install -r collections/requirements.yml  -p collections/
+ 1186  vim collections/requirements.yml
+ 1187  ansible-galaxy collection install -r collections/requirements.yml  -p collections/
+ 1188  ls collections/
+ 1189  ls collections/ansible_collections/
+ 1190  ls collections/ansible_collections/example/collection/
+ 1191  ls collections/ansible_collections/example/collection/roles/
+ 1192  vim site.yml
+ 1193  cat site.yml
+ 1194  ansible all --list-hosts 
+ 1195  ssh serverf
+ 1196  ansible-navigator run site.yml --pae false 
+ 1197  ssh serverf
+ 1198  ansible-navigator images --pp missing
+ 1199  ansible-navigator images --pp missing -m interactive
+ 1200  sudo yum list ansible-builder 
+ 1201  ls
+ 1202  mkdir ee 
+ 1203  vim ee/execution-environment.yml
+ 1204  ct ee/execution-environment.yml
+ 1205  cat ee/execution-environment.yml
+ 1206  vim ee/requirements.yml
+ 1207  ls example/collection/
+ 1208  vim ee/requirements.yml
+ 1209  cat ee/requirements.yml
+ 1210  cd ee/
+ 1211  ls
+ 1212  tree 
+ 1213  ansible-builder create 
+ 1214  tree 
+ 1215  cp ../example/collection/example-collection-1.0.0.tar.gz context/_build/
+ 1216  tree 
+ 1217  #  ansible-builder build -t ee-mymotd-minimal:1.0 
+ 1218  podman images 
+ 1219  ansible-builder build -t ee-mymotd-minimal:1.0 
+ 1220  podman images 
+ 1221  ansible-navigator images --pp never localhost/ee-mymotd-minimal:1.0 -m interactive
+ 1222  podman login hub.lab.example.com -u student -p redhat123
+ 1223  podman tag localhost/ee-mymotd-minimal:1.0 hub.lab.example.com/ee-mymotd-minimal:1.0
+ 1224  podman images 
+ 1225  podman push hub.lab.example.com/ee-mymotd-minimal:1.0 
+ 1226  ls
+ 1227  pwd
+ 1228  cd ..
+ 1229  git add .
+ 1230  git commit -m "Added custom exec env image"
+ 1231  git push 
+ 1232  history > history.txt
