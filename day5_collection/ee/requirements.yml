@@ -1,0 +1,4 @@
+---
+collections:
+  - name: /build/example-collection-1.0.0.tar.gz
+    type: file

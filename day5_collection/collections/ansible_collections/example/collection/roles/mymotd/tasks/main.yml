@@ -1,0 +1,14 @@
+---
+# tasks file for mymotd
+- name: Create a global user 
+  ansible.builtin.user:
+    name: "{{ user | default('saraj', true) }}"
+    state: present 
+
+- name: Update the /etc/motd file 
+  ansible.builtin.template:
+    src: motd.j2
+    dest: /etc/motd
+    owner: root
+    group: root
+    mode: "0644"

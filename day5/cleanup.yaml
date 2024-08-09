@@ -1,0 +1,25 @@
+---
+- name: Destroy the web server
+  hosts: all
+  become: true
+  tasks:
+  - name: Stop and disable the service
+    ansible.builtin.service:
+      name: httpd
+      state: stopped
+      enabled: false
+  - name: Remove the package
+    ansible.builtin.yum:
+      name: httpd
+      state: absent
+  - name: Remove the directory 
+    ansible.builtin.file:
+      path: /var/www/html
+      state: absent
+  - name: Close the firewall port
+    ansible.posix.firewalld:
+      service: http
+      immediate: true
+      permanent: true
+      state: disabled
+...

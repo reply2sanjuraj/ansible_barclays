@@ -1,0 +1,11 @@
+---
+- name: Using the delegation
+  hosts: all
+  become: false
+  tasks:
+  - name: Delegate the task to a system which is not listed in the inventory
+    ansible.builtin.debug:
+      msg: "The variable my_var is defined on {{ ansible_host }} with the value as {{ my_var | default('INDIA') }}"
+    delegate_to: serverd.lab.example.com
+
+...

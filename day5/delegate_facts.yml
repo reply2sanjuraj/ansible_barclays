@@ -1,0 +1,16 @@
+---
+- name: Using the delegation
+  hosts: all
+  become: true
+  tasks:
+  - name: Using delegate facts 
+    ansible.builtin.set_fact:
+      myfact: "Hello, Where am I set?"
+    delegate_to: localhost
+    delegate_facts: true
+
+  - name: Dsplay the facts
+    ansible.builtin.debug:
+      msg: "{{ hostvars['localhost']['myfact']}}"
+
+...

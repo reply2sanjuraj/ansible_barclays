@@ -1,0 +1,7 @@
+---
+- name: Using custom  collection 
+  hosts: all
+  become: true
+  roles:
+    - role: example.collection.mymotd
+...
